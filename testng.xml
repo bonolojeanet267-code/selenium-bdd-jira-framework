@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-current.dtd">
+<suite name="Selenium BDD Test Suite" parallel="false" verbose="2">
+    <test name="Selenium BDD Tests">
+        <classes>
+            <!-- Add your test classes here -->
+            <!-- Example: <class name="com.automation.tests.YourTestClass"/> -->
+        </classes>
+    </test>
+</suite>
