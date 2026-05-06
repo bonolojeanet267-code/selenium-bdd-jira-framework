@@ -29,8 +29,31 @@ jobs:
 
       - name: Run Selenium BDD Tests
         env:
+          # LambdaTest Credentials
           LT_USERNAME: ${{ secrets.LT_USERNAME }}
           LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+          # Jira Configuration
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT_KEY: ${{ secrets.JIRA_PROJECT_KEY }}
+
+          # Browser Configuration
+          BROWSER: "chrome"
+          BROWSER_VERSION: "latest"
+          PLATFORM_NAME: "Windows 10"
+
+          # Test Configuration
+          BUILD_NAME: "GitHub-Run-${{ github.run_number }}"
+          TEST_NAME: "Selenium-BDD-Tests"
+          IMPLICIT_TIMEOUT: "10"
+
+          # LambdaTest Capabilities
+          VIDEO: "true"
+          NETWORK: "true"
+          VISUAL: "true"
+
         run: mvn test
 
       - name: Upload Test Reports
@@ -38,4 +61,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-reports
-          path: target/
+          path: |
+            target/
+            test-output/
+            cucumber-reports/
